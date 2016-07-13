@@ -32,6 +32,7 @@ public class Payroll {
 	public void calculate(Employee employee, double basePay, int hours) {
 		int baseHours = 40;
 		float overtime = 1.5f;
+		double wage = 0.0d;
 
 		this.setEmployee(employee);
 		this.setBasePay(basePay);
@@ -48,15 +49,15 @@ public class Payroll {
 		}
 
 		if (hours <= baseHours) {
-			this.getEmployee().setWage(this.getBasePay() * this.getHours());
+			wage = this.getBasePay() * this.getHours();
 		} else {
 			int over = this.getHours() - baseHours;
 			double baseWage = this.getBasePay() * baseHours;
 			double overtimeWage = this.getBasePay() * overtime * over;
-			this.getEmployee().setWage(baseWage + overtimeWage);
+			wage = baseWage + overtimeWage;
 		}
 
-		System.out.println(this.getEmployee().getName() + " wages: " + this.getEmployee().getWage());
+		System.out.println(this.getEmployee().getName() + " wages: " + wage);
 	}
 
 }
